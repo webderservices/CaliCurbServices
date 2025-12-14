@@ -1,40 +1,51 @@
 // scripts.js
 
 document.addEventListener("DOMContentLoaded", () => {
+
   // Smooth scrolling for nav links
   const navLinks = document.querySelectorAll('nav ul li a');
 
   navLinks.forEach(link => {
     link.addEventListener("click", e => {
       e.preventDefault();
-      const targetId = link.getAttribute("href").replace(".html", "");
-      const targetSection = document.getElementById(targetId) || document.body;
+      const href = link.getAttribute("href");
 
-      window.scrollTo({
-        top: targetSection.offsetTop - 60, // adjust for fixed header if needed
-        behavior: "smooth"
+      // Only smooth scroll for same-page links
+      if (href.startsWith("#")) {
+        const targetSection = document.querySelector(href);
+        if (targetSection) {
+          window.scrollTo({
+            top: targetSection.offsetTop - 60,
+            behavior: "smooth"
+          });
+        }
+      } else {
+        // Navigate normally for other pages
+        window.location.href = href;
+      }
+    });
+  });
+
+  // Highlight active nav item on scroll (only if sections exist)
+  const sections = document.querySelectorAll("main section[id]");
+  if (sections.length > 0) {
+    window.addEventListener("scroll", () => {
+      let current = "";
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 70;
+        if (pageYOffset >= sectionTop) {
+          current = section.getAttribute("id");
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href").includes(current)) {
+          link.classList.add("active");
+        }
       });
     });
-  });
-
-  // Highlight active nav item on scroll
-  const sections = document.querySelectorAll("main section");
-  window.addEventListener("scroll", () => {
-    let current = "";
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop - 70;
-      if (pageYOffset >= sectionTop) {
-        current = section.getAttribute("id");
-      }
-    });
-
-    navLinks.forEach(link => {
-      link.classList.remove("active");
-      if (link.getAttribute("href").includes(current)) {
-        link.classList.add("active");
-      }
-    });
-  });
+  }
 
   // Simple form validation
   const form = document.querySelector("form");
@@ -60,4 +71,5 @@ document.addEventListener("DOMContentLoaded", () => {
       hero.style.backgroundPosition = `center ${offset}px`;
     }, 100);
   }
+
 });
