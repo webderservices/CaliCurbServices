@@ -1,29 +1,24 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  // Smooth scrolling for nav links and footer CTA
-  const navLinks = document.querySelectorAll('nav ul li a, footer .cta-button');
-
-  navLinks.forEach(link => {
+  // Smooth scrolling for anchor links (if used)
+  const anchors = document.querySelectorAll('a[href^="#"]');
+  anchors.forEach(link => {
     link.addEventListener("click", e => {
       e.preventDefault();
-      const href = link.getAttribute("href");
-      if (href.startsWith("#")) {
-        const targetSection = document.querySelector(href);
-        if (targetSection) {
-          window.scrollTo({
-            top: targetSection.offsetTop - 60,
-            behavior: "smooth"
-          });
-        }
-      } else {
-        window.location.href = href;
+      const target = document.querySelector(link.getAttribute("href"));
+      if (target) {
+        window.scrollTo({
+          top: target.offsetTop - 60,
+          behavior: "smooth"
+        });
       }
     });
   });
 
-  // Highlight active nav item
+  // Active nav highlighting for main page only
   const sections = document.querySelectorAll("main section[id]");
   if (sections.length > 0) {
+    const navLinks = document.querySelectorAll("nav ul li a");
     window.addEventListener("scroll", () => {
       let current = "";
       sections.forEach(section => {
@@ -42,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Form validation
+  // Simple form validation for contact page
   const form = document.querySelector("form");
   if (form) {
     form.addEventListener("submit", e => {
@@ -56,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Hero float animation
+  // Hero float animation on main page
   const hero = document.querySelector(".hero");
   if (hero) {
     let offset = 0;
