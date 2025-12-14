@@ -1,16 +1,12 @@
-// scripts.js
-
 document.addEventListener("DOMContentLoaded", () => {
 
-  // Smooth scrolling for nav links
-  const navLinks = document.querySelectorAll('nav ul li a');
+  // Smooth scrolling for nav links and footer CTA
+  const navLinks = document.querySelectorAll('nav ul li a, footer .cta-button');
 
   navLinks.forEach(link => {
     link.addEventListener("click", e => {
       e.preventDefault();
       const href = link.getAttribute("href");
-
-      // Only smooth scroll for same-page links
       if (href.startsWith("#")) {
         const targetSection = document.querySelector(href);
         if (targetSection) {
@@ -20,13 +16,12 @@ document.addEventListener("DOMContentLoaded", () => {
           });
         }
       } else {
-        // Navigate normally for other pages
         window.location.href = href;
       }
     });
   });
 
-  // Highlight active nav item on scroll (only if sections exist)
+  // Highlight active nav item
   const sections = document.querySelectorAll("main section[id]");
   if (sections.length > 0) {
     window.addEventListener("scroll", () => {
@@ -47,14 +42,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Simple form validation
+  // Form validation
   const form = document.querySelector("form");
   if (form) {
     form.addEventListener("submit", e => {
       const name = form.querySelector("#name");
       const email = form.querySelector("#email");
       const message = form.querySelector("#message");
-
       if (!name.value || !email.value || !message.value) {
         e.preventDefault();
         alert("Please fill out all fields before submitting.");
@@ -62,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Optional hero float animation
+  // Hero float animation
   const hero = document.querySelector(".hero");
   if (hero) {
     let offset = 0;
