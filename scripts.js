@@ -1,14 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
 
   // Hero animation only if .hero exists (index.html)
-  const hero = document.querySelector(".hero");
-  if (hero) {
-    let offset = 0;
-    setInterval(() => {
-      offset = (offset + 0.5) % 10;
-      hero.style.backgroundPosition = `center ${offset}px`;
-    }, 100);
-  }
+ // const hero = document.querySelector(".hero");
+ // if (hero) {
+  //  let offset = 0;
+   // setInterval(() => {
+    //  offset = (offset + 0.5) % 10;
+     // hero.style.backgroundPosition = `center ${offset}px`;
+   // }, 100);
+ // }
 
   // Form validation only if form exists (contact.html)
   const form = document.querySelector("form");
