@@ -6,10 +6,11 @@ body {
     line-height: 1.6;
     background: #f0f8ff; /* soft sky blue */
     color: #333;
+    text-align: center;
 }
 
 header {
-    background: #00aaff; /* ocean blue */
+    background: #005f99; /* darker ocean blue for contrast */
     color: #fff;
     padding: 1rem;
     text-align: center;
@@ -18,7 +19,7 @@ header {
 
 header h1 {
     margin: 0;
-    font-family: 'Comic Sans MS', cursive, sans-serif; /* casual seaside font */
+    font-family: 'Comic Sans MS', cursive, sans-serif;
 }
 
 nav ul {
@@ -26,34 +27,25 @@ nav ul {
     padding: 0;
     display: flex;
     justify-content: center;
-    gap: 1.5rem;
+    gap: 2rem;
+    margin-top: 0.5rem;
 }
 
 nav ul li a {
-    color: #fff;
+    color: #ffd700; /* gold for visibility */
     text-decoration: none;
     font-weight: bold;
+    font-size: 1.1rem;
 }
 
-nav ul li a.active {
+nav ul li a:hover {
     text-decoration: underline;
-    color: #ff7f50; /* match CTA color */
-}
-
-main {
-    padding: 2rem;
-}
-
-main section {
-    margin-bottom: 2rem;
-    padding: 1rem;
 }
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(to bottom, #aee1f9, #ffffff); /* soft ocean to sand */
-    padding: 2rem;
-    text-align: center;
+    background: linear-gradient(to bottom, #aee1f9, #ffffff);
+    padding: 3rem 1rem;
     border-radius: 12px;
     margin-bottom: 2rem;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -62,20 +54,13 @@ main section {
 }
 
 .hero h2 {
-    font-size: 1.8rem;
+    font-size: 2rem;
+    margin-bottom: 1rem;
 }
 
 .hero p {
-    font-size: 1.1rem;
-}
-
-@media (max-width: 600px) {
-    .hero h2 {
-        font-size: 1.4rem;
-    }
-    .hero p {
-        font-size: 1rem;
-    }
+    font-size: 1.2rem;
+    color: #0077aa; /* dark ocean accent */
 }
 
 /* Decorative waves at the bottom of hero */
@@ -95,38 +80,27 @@ main section {
     pointer-events: none;
 }
 
-/* CTA Button */
-.cta-button {
-    display: inline-block;
-    background: #ff7f50; /* sunset coral */
-    color: #fff;
-    padding: 0.7rem 1.2rem;
-    margin-top: 1rem;
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: bold;
-    transition: background 0.1s;
-}
-
-.cta-button:hover {
-    background: #ff5722;
-}
-
 /* About Section */
 .about {
-    background: #e0f7fa; /* very light ocean blue */
-    padding: 1.5rem;
+    background: #e0f7fa;
+    padding: 2rem 1rem;
     border-radius: 12px;
+    margin-bottom: 2rem;
     box-shadow: 0 2px 6px rgba(0,0,0,0.05);
 }
 
-/* Service Items */
+/* Services Section */
+.services {
+    margin-bottom: 2rem;
+}
+
 .service-item {
-    background: #fff8dc; /* sand color */
+    background: #fff8dc;
     padding: 1.5rem;
-    margin-bottom: 1.5rem;
+    margin: 1rem auto;
     border-radius: 12px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    max-width: 500px;
     transition: all 0.3s ease;
 }
 
@@ -142,13 +116,24 @@ main section {
     color: #ff7f50; /* sunset accent */
 }
 
-/* Form */
+/* Contact Section */
+.contact ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1rem;
+}
+
+.contact li {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
 form {
     display: flex;
     flex-direction: column;
     gap: 1rem;
     max-width: 400px;
-    margin: 1rem auto;
+    margin: 0 auto;
 }
 
 form input, form textarea {
@@ -160,43 +145,34 @@ form input, form textarea {
     box-sizing: border-box;
 }
 
-button {
+button, .cta-button {
+    display: inline-block;
     background: #ff7f50;
     color: #fff;
     border: none;
-    cursor: pointer;
-    transition: background 0.1s;
-    padding: 0.6rem;
-    font-size: 1rem;
     border-radius: 6px;
+    cursor: pointer;
+    padding: 0.7rem 1.2rem;
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background 0.3s;
 }
 
-button:hover {
+button:hover, .cta-button:hover {
     background: #ff5722;
 }
 
 /* Footer */
 footer {
-    background: #0077aa; /* deeper ocean */
+    background: #0077aa;
     color: #fff;
-    text-align: center;
-    padding: 2rem 1rem 1rem 1rem;
+    padding: 2rem 1rem;
     margin-top: 2rem;
     position: relative;
+    text-align: center;
 }
 
-footer::before {
-    content: "";
-    display: block;
-    position: absolute;
-    top: -40px;
-    left: 0;
-    width: 100%;
-    height: 40px;
-    background: url('data:image/svg+xml;utf8,\
-<svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg">\
-<path fill="%230077aa" fill-opacity="0.7" d="M0,64L60,80C120,96,240,128,360,144C480,160,600,160,720,160C840,160,960,160,1080,144C1200,128,1320,96,1380,80L1440,64L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path>\
-</svg>') no-repeat top;
-    background-size: cover;
-    pointer-events: none;
+footer .cta-button {
+    margin-top: 1rem;
 }
